@@ -1,0 +1,22 @@
+{
+  "name": "lista-de-filmes",
+  "version": "1.0.0",
+  "description": "Projeto para realização de uma lista de filmes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KauanMO/Lista-de-filmes.git"
+  },
+  "author": "Kauan Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KauanMO/Lista-de-filmes/issues"
+  },
+  "homepage": "https://github.com/KauanMO/Lista-de-filmes#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
