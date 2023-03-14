@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big lista de movie</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="<% if(filme != null){%>../<%}%>style.css">
+    <link rel="stylesheet" href="<% if(filme != null){%>../<%}%>reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,19 +18,36 @@
             <span id="spanTitulo">Listaço de Filmes</span>
         </div>
         <div class="input">
-            <form action="/create" id="formulario" method="post">
-                <input type="text" placeholder="Digite um filme" name="filme" id="filme">
-                <input id="submit" type="submit" value=">">
-            </form>
+
+            <% if(filme == null) { %>
+                <form action="/create" id="formulario" method="post">
+                    <input type="text" placeholder="Digite um filme" name="filme" id="filme">
+                    <input id="submit" type="submit" value=">">
+                </form>
+
+                <% }else{ %>
+
+                <form action="/update/<%= filme._id %>" id="formulario" method="post">
+                    <input type="text" value="<%= filme.filme %>" name="filme" id="filme">
+                    <input id="submit" type="submit" value=">">
+                </form>
+            <% } %>
         </div>
 
-        <ul>
-            <% filmeList.forEach((filme)=> { %>
-                <li>
-                    <%= filme.filme %> | <%= filme.date.toLocaleDateString('pt-BR') %>
-                </li>
-            <% }) %>
-        </ul>
+        <section>
+            <ul>
+                <% filmeList.forEach((filme)=> { %>
+                    <li>
+                        <span>
+                            <%= filme.filme %> | <%= filme.date.toLocaleDateString('pt-BR') %>
+                        </span>
+                        <div class="icon">
+                            <a href="/getById/<%= filme._id %>"><i style="color: white" class="fa-regular fa-pen-to-square"></i></a>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+        </section>
 
     </div>
 

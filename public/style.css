@@ -47,3 +47,17 @@ body{
     justify-content: center;
     gap: 0.3rem;
 }
+
+ul li{
+    color: white;
+    background-color: gray;
+    padding: 0.6rem;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul li:nth-child(odd) {
+    background-color: black;
+}
+
