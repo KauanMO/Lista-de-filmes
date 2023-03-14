@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,48 +11,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="<% if(filme != null){%>../<%}%>script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <span id="spanTitulo">Listaço de Filmes</span>
-        </div>
-        <div class="input">
 
-            <% if(filme == null) { %>
-                <form action="/create" id="formulario" method="post">
-                    <input type="text" placeholder="Digite um filme" name="filme" id="filme">
-                    <input id="submit" type="submit" value=">">
-                </form>
+    <% if(mensagem !="" ){ %>
 
-                <% }else{ %>
-
-                <form action="/update/<%= filme._id %>" id="formulario" method="post">
-                    <input type="text" value="<%= filme.filme %>" name="filme" id="filme">
-                    <input id="submit" type="submit" value=">">
-                </form>
-            <% } %>
-        </div>
-
-        <section>
-            <ul>
-                <% filmeList.forEach((filme)=> { %>
-                    <li>
-                        <span>
-                            <%= filme.filme %> | <%= filme.date.toLocaleDateString('pt-BR') %>
-                        </span>
-                        <div class="icon">
-                            <a href="/getById/<%= filme._id %>"><i style="color: white" class="fa-regular fa-pen-to-square"></i></a>
-                        </div>
-                    </li>
-                    <% }) %>
-            </ul>
+        <section class="mensagem mensagem-<%= type %>">
+            <span>
+                <%= mensagem %>
+            </span>
+            <span id="close"><i class="fa-solid fa-xmark" style="color: white"></i></span>
         </section>
 
-    </div>
+        <% } %>
 
-    <script src="script.js"></script>
+            <div class="container">
+                <div class="header">
+                    <span id="spanTitulo">Listaço de Filmes</span>
+                </div>
+                <div class="input">
+
+                    <% if(filme==null) { %>
+                        <form action="/create" id="formulario" method="post">
+                            <input type="text" placeholder="Digite um filme" name="filme" id="filme">
+                            <input id="submit" type="submit" value=">">
+                        </form>
+                        <% }else{ %>
+
+                            <form action="/update/<%= filme._id %>" id="formulario" method="post">
+                                <input type="text" value="<%= filme.filme %>" name="filme" id="filme">
+                                <input id="submit" type="submit" value=">">
+                            </form>
+                            <% } %>
+                </div>
+
+                <section>
+                    <ul>
+                        <% filmeList.forEach((filme)=> { %>
+                            <li>
+                                <span>
+                                    <%= filme.filme %> | <%= filme.date.toLocaleDateString('pt-BR') %>
+                                </span>
+                                <div class="icon">
+                                    <a href="/getById/<%= filme._id %>"><i style="color: white"
+                                            class="fa-regular fa-pen-to-square"></i></a>
+                                </div>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </section>
+
+            </div>
+
+            <script src="script.js"></script>
 </body>
 
 </html>
