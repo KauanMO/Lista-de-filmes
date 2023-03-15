@@ -97,7 +97,7 @@ ul li:nth-child(odd) {
 
 #criadoEm{
     font-size: .7rem;
-    align-self: start;
+    margin-left: .8rem;
 }
 
 #movie-list{
@@ -120,7 +120,6 @@ ul li:nth-child(odd) {
 
 a{
     color: white;
-    display: flex;
 }
 
 
