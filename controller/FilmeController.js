@@ -6,6 +6,7 @@ let type = ""
 const getAllFilmes = async (req, res) => {
     try {
         const filmeList = await Filme.find()
+
         return res.render("index", { filmeList, filme: null, mensagem, type })
     } catch (err) {
         res.status(500).send({ error: err.message })
@@ -59,4 +60,21 @@ const updateFilme = async (req, res) => {
 
 }
 
-module.exports = { getAllFilmes, createFilme, getById, updateFilme }
+const filmeCheck = async (req, res) => {
+    try {
+        const filme = await Filme.findOne({ _id: req.params.id })
+
+        if (filme.check) {
+            filme.check = false;
+        } else {
+            filme.check = true;
+        }
+
+        await Filme.updateOne({ _id: req.params.id }, filme);
+        res.redirect("/");
+    } catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+}
+
+module.exports = { getAllFilmes, createFilme, getById, updateFilme, filmeCheck }

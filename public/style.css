@@ -55,6 +55,8 @@ ul li{
     font-size: 1.3rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100rem;
 }
 
 ul li:nth-child(odd) {
@@ -93,3 +95,36 @@ ul li:nth-child(odd) {
     cursor: pointer;
 }
 
+#criadoEm{
+    font-size: .7rem;
+    align-self: start;
+}
+
+#movie-list{
+    display: flex;
+    justify-content: center;
+}
+
+#checkbox{
+    width: 1rem;
+    cursor: pointer;
+}
+
+.check-false{
+    text-decoration: none;
+}
+
+.check-true{
+    text-decoration: line-through;
+}
+
+a{
+    color: white;
+    display: flex;
+}
+
+
+.titulo{
+    display: flex;
+    align-items: center;
+}

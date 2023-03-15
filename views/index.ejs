@@ -37,7 +37,7 @@
 
                     <% if(filme==null) { %>
                         <form action="/create" id="formulario" method="post">
-                            <input type="text" placeholder="Digite um filme" name="filme" id="filme">
+                            <input type="text" placeholder="Digite um filme" name="filme" autocomplete="off" id="filme">
                             <input id="submit" type="submit" value=">">
                         </form>
                         <% }else{ %>
@@ -49,18 +49,32 @@
                             <% } %>
                 </div>
 
-                <section>
+                <section id="movie-list">
                     <ul>
                         <% filmeList.forEach((filme)=> { %>
-                            <li>
-                                <span>
-                                    <%= filme.filme %> | <%= filme.date.toLocaleDateString('pt-BR') %>
-                                </span>
+                            <li class="check-<%= filme.check %>">
+                                <a href="/check/<%= filme._id %>" class="check-<%= filme.check %>">
+                                    <div class="titulo">
+                                        <span>
+                                            <%= filme.filme %>
+                                        </span>
+
+                                        <span id="criadoEm">
+                                            Criado em <%= filme.date.toLocaleDateString('pt-BR') %>
+                                        </span>
+
+                                        <span id="assistidoEm">
+
+                                        </span>
+                                    </div>
+                                </a>
                                 <div class="icon">
                                     <a href="/getById/<%= filme._id %>"><i style="color: white"
                                             class="fa-regular fa-pen-to-square"></i></a>
                                 </div>
                             </li>
+
+
                             <% }) %>
                     </ul>
                 </section>
